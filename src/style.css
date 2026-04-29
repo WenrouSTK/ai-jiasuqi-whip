@@ -1,0 +1,198 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+#app {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-app-region: no-drag;
+}
+
+#top-bar {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  cursor: grab;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.01);
+}
+
+#counter {
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  text-shadow: 0 0 4px #000, 0 0 8px #000;
+}
+
+#drag-handle {
+  width: 22px;
+  height: 22px;
+  cursor: grab;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+#drag-handle:hover {
+  opacity: 1;
+}
+
+#drag-handle:active {
+  cursor: grabbing;
+}
+
+#stage {
+  width: 240px;
+  height: 240px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-app-region: no-drag;
+  cursor: pointer;
+}
+
+#sprite {
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+#face-logo {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  bottom: 105px;
+  left: 52px;
+  pointer-events: none;
+  image-rendering: auto;
+}
+
+/* 空素材占位提示 */
+#sprite.empty {
+  width: 200px;
+  height: 200px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 80, 80, 0.6),
+    rgba(255, 80, 80, 0.6) 10px,
+    rgba(180, 40, 40, 0.6) 10px,
+    rgba(180, 40, 40, 0.6) 20px
+  );
+  border-radius: 16px;
+}
+
+/* PUA 飘字 */
+.float-text {
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 3px #000, 0 0 6px #000;
+  animation: float-up 1s ease-out forwards;
+  z-index: 100;
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-88px);
+  }
+}
+
+/* Outstanding 彩蛋飘字 */
+.float-text.outstanding {
+  font-size: 32px;
+  font-weight: 900;
+  color: #FFD700;
+  text-shadow: 0 0 8px #FFD700, 0 0 16px #FFA500, 0 0 4px #000;
+  animation: outstanding-up 3s ease-out forwards;
+  z-index: 200;
+}
+
+@keyframes outstanding-up {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150%) scale(1);
+  }
+}
+
+/* 金色星星 - 小人头顶 */
+#stars {
+  position: absolute;
+  bottom: 150px;
+  left: 19px;
+  font-size: 11px;
+  letter-spacing: -1px;
+  pointer-events: none;
+  opacity: 0.76;
+  transform: rotate(-28deg) scale(0.72);
+  z-index: 20;
+}
+
+/* 彩蛋第二行 */
+.float-text.congrats {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 0 0 6px #FFD700, 0 0 3px #000;
+  animation: congrats-show 4s ease-in-out forwards;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+@keyframes congrats-show {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

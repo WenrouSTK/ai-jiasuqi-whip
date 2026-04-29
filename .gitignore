@@ -1,0 +1,24 @@
+# Build artifacts
+target/
+dist/
+node_modules/
+.tauri/
+*.log
+
+# Neutralinojs (已废弃方案)
+AiWhip-neu/
+AiWhip-dist/
+bin/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Lock files (optional — keep for reproducible builds)
+# package-lock.json
+
+# Cargo
+Cargo.lock.bak
+**/*.rs.bk
